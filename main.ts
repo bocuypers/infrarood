@@ -3,11 +3,14 @@ let vooruit = 27
 let achteruit = 4
 let links = 11
 let rechts = 25
+let stop = 94
 basic.forever(function () {
     ir_waarde = IR.IR_read()
 })
 basic.forever(function () {
-    basic.showNumber(ir_waarde)
+    if (ir_waarde == stop) {
+        led.stopAnimation()
+    }
 })
 basic.forever(function () {
     if (ir_waarde == vooruit) {
