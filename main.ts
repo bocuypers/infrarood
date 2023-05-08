@@ -1,3 +1,4 @@
+let strip: neopixel.Strip = null
 let ir_waarde = 0
 let vooruit = 27
 let achteruit = 4
@@ -9,9 +10,6 @@ basic.forever(function () {
         maqueen.motorStop(maqueen.Motors.All)
         basic.pause(100)
     }
-})
-basic.forever(function () {
-    ir_waarde = IR.IR_read()
 })
 basic.forever(function () {
     if (ir_waarde == vooruit) {
@@ -34,4 +32,9 @@ basic.forever(function () {
         maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 30)
         maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 30)
     }
+})
+basic.forever(function () {
+    ir_waarde = IR.IR_read()
+    strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
+    strip.showColor(neopixel.colors(NeoPixelColors.Purple))
 })
